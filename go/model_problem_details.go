@@ -9,6 +9,9 @@
 
 package openapi
 
+
+
+
 type ProblemDetails struct {
 
 	Type *string `json:"type,omitempty"`
@@ -27,14 +30,7 @@ func AssertProblemDetailsRequired(obj ProblemDetails) error {
 	return nil
 }
 
-// AssertRecurseProblemDetailsRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of ProblemDetails (e.g. [][]ProblemDetails), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseProblemDetailsRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aProblemDetails, ok := obj.(ProblemDetails)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertProblemDetailsRequired(aProblemDetails)
-	})
+// AssertProblemDetailsConstraints checks if the values respects the defined constraints
+func AssertProblemDetailsConstraints(obj ProblemDetails) error {
+	return nil
 }

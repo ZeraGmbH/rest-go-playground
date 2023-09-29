@@ -9,6 +9,9 @@
 
 package openapi
 
+
+
+
 type VeinGet struct {
 
 	// The component ID of the desired information
@@ -16,9 +19,6 @@ type VeinGet struct {
 
 	// The component name of the desired information
 	ComponentName string `json:"componentName,omitempty"`
-
-	// However we want to handle the request field
-	MiscFieldForInfo string `json:"MiscFieldForInfo,omitempty"`
 }
 
 // AssertVeinGetRequired checks if the required fields are not zero-ed
@@ -26,14 +26,7 @@ func AssertVeinGetRequired(obj VeinGet) error {
 	return nil
 }
 
-// AssertRecurseVeinGetRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of VeinGet (e.g. [][]VeinGet), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseVeinGetRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aVeinGet, ok := obj.(VeinGet)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertVeinGetRequired(aVeinGet)
-	})
+// AssertVeinGetConstraints checks if the values respects the defined constraints
+func AssertVeinGetConstraints(obj VeinGet) error {
+	return nil
 }

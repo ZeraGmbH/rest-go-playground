@@ -37,6 +37,16 @@ paths:
                 $ref: '#/components/schemas/VeinGetResponse'
           description: If the information could be successfully retrieved.
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
           description: If the request was malformed.
         "422":
           description: If the request was wellformed but could not be retrieved.
@@ -73,8 +83,28 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: If the information could be successfully set.
         "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
           description: If the request was malformed.
         "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
           description: If the request was wellformed but could not be set.
         "500":
           description: If an unexpected error occured.
@@ -86,7 +116,6 @@ components:
     VeinGet:
       example:
         EntityID: 0
-        MiscFieldForInfo: MiscFieldForInfo
         componentName: componentName
       properties:
         EntityID:
@@ -96,25 +125,32 @@ components:
           type: integer
         componentName:
           description: The component name of the desired information
-          nullable: false
-          type: string
-        MiscFieldForInfo:
-          description: However we want to handle the request field
           nullable: false
           type: string
       type: object
     VeinGetResponse:
       example:
-        ReturnInformation: "{}"
+        ReturnInformation: ReturnInformation
+        type: type
+        status: 0
       properties:
         ReturnInformation:
           description: The desired return information formated as json
-          type: object
+          nullable: false
+          type: string
+        type:
+          description: The original data Type
+          nullable: false
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     VeinSet:
       example:
         EntityID: 0
-        MiscFieldForInfo: MiscFieldForInfo
+        newValue: newValue
         componentName: componentName
       properties:
         EntityID:
@@ -126,8 +162,8 @@ components:
           description: The component name of the desired information
           nullable: false
           type: string
-        MiscFieldForInfo:
-          description: However we want to handle the setter field
+        newValue:
+          description: newValue to set to component
           nullable: false
           type: string
       type: object

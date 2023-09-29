@@ -13,12 +13,11 @@ import (
 	"encoding/json"
 	"net/http"
 	"strings"
-
 )
 
 // VeinApiController binds http requests to an api service and writes the service results to the http response
 type VeinApiController struct {
-	service VeinApiServicer
+	service      VeinAPIServicer
 	errorHandler ErrorHandler
 }
 
@@ -33,7 +32,7 @@ func WithVeinApiErrorHandler(h ErrorHandler) VeinApiOption {
 }
 
 // NewVeinApiController creates a default api controller
-func NewVeinApiController(s VeinApiServicer, opts ...VeinApiOption) Router {
+func NewVeinAPIController(s VeinAPIServicer, opts ...VeinApiOption) Router {
 	controller := &VeinApiController{
 		service:      s,
 		errorHandler: DefaultErrorHandler,
@@ -48,15 +47,13 @@ func NewVeinApiController(s VeinApiServicer, opts ...VeinApiOption) Router {
 
 // Routes returns all the api routes for the VeinApiController
 func (c *VeinApiController) Routes() Routes {
-	return Routes{ 
-		{
-			"ApiV1VeinGetInfoPost",
+	return Routes{
+		"ApiV1VeinGetInfoPost": Route{
 			strings.ToUpper("Post"),
 			"/api/v1/Vein/GetInfo",
 			c.ApiV1VeinGetInfoPost,
 		},
-		{
-			"ApiV1VeinSetInfoPost",
+		"ApiV1VeinSetInfoPost": Route{
 			strings.ToUpper("Post"),
 			"/api/v1/Vein/SetInfo",
 			c.ApiV1VeinSetInfoPost,

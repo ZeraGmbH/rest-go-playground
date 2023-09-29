@@ -15,57 +15,56 @@ import (
 	"net/http"
 )
 
-// VeinApiService is a service that implements the logic for the VeinApiServicer
-// This service should implement the business logic for every endpoint for the VeinApi API.
+// VeinAPIService is a service that implements the logic for the VeinAPIServicer
+// This service should implement the business logic for every endpoint for the VeinAPI API.
 // Include any external packages or services that will be required by this service.
-type VeinApiService struct {
+type VeinAPIService struct {
 }
 
-// NewVeinApiService creates a default api service
-func NewVeinApiService() VeinApiServicer {
-	return &VeinApiService{}
+// NewVeinAPIService creates a default api service
+func NewVeinAPIService() VeinAPIServicer {
+	return &VeinAPIService{}
 }
 
 // ApiV1VeinGetInfoPost - Gets information from Vein.
-func (s *VeinApiService) ApiV1VeinGetInfoPost(ctx context.Context, veinGet VeinGet) (ImplResponse, error) {
+func (s *VeinAPIService) ApiV1VeinGetInfoPost(ctx context.Context, veinGet VeinGet) (ImplResponse, error) {
 	// TODO - update ApiV1VeinGetInfoPost with the required logic for this service method.
 	// Add api_vein_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
+	// TODO: Uncomment the next line to return response Response(200, VeinGetResponse{}) or use other options such as http.Ok ...
 	var ret VeinGetResponse
-	ret.ReturnInformation = make(map[string]interface{})
-	ret.ReturnInformation["ReturnInformation"] = "Requested component: " + veinGet.ComponentName
 
-	//TODO: Uncomment the next line to return response Response(200, VeinGetResponse{}) or use other options such as http.Ok ...
+	ret.ReturnInformation = "Requested component: " + veinGet.ComponentName
 	return Response(200, ret), nil
 
-	//TODO: Uncomment the next line to return response Response(400, {}) or use other options such as http.Ok ...
-	//return Response(400, nil),nil
+	// TODO: Uncomment the next line to return response Response(400, ProblemDetails{}) or use other options such as http.Ok ...
+	// return Response(400, ProblemDetails{}), nil
 
-	//TODO: Uncomment the next line to return response Response(422, {}) or use other options such as http.Ok ...
-	//return Response(422, nil),nil
+	// TODO: Uncomment the next line to return response Response(422, {}) or use other options such as http.Ok ...
+	// return Response(422, nil),nil
 
-	//TODO: Uncomment the next line to return response Response(500, {}) or use other options such as http.Ok ...
-	//return Response(500, nil),nil
+	// TODO: Uncomment the next line to return response Response(500, {}) or use other options such as http.Ok ...
+	// return Response(500, nil),nil
 
 	//return Response(http.StatusNotImplemented, nil), errors.New("ApiV1VeinGetInfoPost method not implemented")
 }
 
 // ApiV1VeinSetInfoPost - Sets information to Vein.
-func (s *VeinApiService) ApiV1VeinSetInfoPost(ctx context.Context, veinSet VeinSet) (ImplResponse, error) {
+func (s *VeinAPIService) ApiV1VeinSetInfoPost(ctx context.Context, veinSet VeinSet) (ImplResponse, error) {
 	// TODO - update ApiV1VeinSetInfoPost with the required logic for this service method.
 	// Add api_vein_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, ProblemDetails{}) or use other options such as http.Ok ...
-	//return Response(200, ProblemDetails{}), nil
+	// TODO: Uncomment the next line to return response Response(200, ProblemDetails{}) or use other options such as http.Ok ...
+	// return Response(200, ProblemDetails{}), nil
 
-	//TODO: Uncomment the next line to return response Response(400, {}) or use other options such as http.Ok ...
-	//return Response(400, nil),nil
+	// TODO: Uncomment the next line to return response Response(400, ProblemDetails{}) or use other options such as http.Ok ...
+	// return Response(400, ProblemDetails{}), nil
 
-	//TODO: Uncomment the next line to return response Response(422, {}) or use other options such as http.Ok ...
-	//return Response(422, nil),nil
+	// TODO: Uncomment the next line to return response Response(422, ProblemDetails{}) or use other options such as http.Ok ...
+	// return Response(422, ProblemDetails{}), nil
 
-	//TODO: Uncomment the next line to return response Response(500, {}) or use other options such as http.Ok ...
-	//return Response(500, nil),nil
+	// TODO: Uncomment the next line to return response Response(500, {}) or use other options such as http.Ok ...
+	// return Response(500, nil),nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("ApiV1VeinSetInfoPost method not implemented")
 }
