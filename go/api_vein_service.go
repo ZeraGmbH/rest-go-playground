@@ -33,9 +33,7 @@ func (s *VeinApiService) ApiV1VeinGetInfoPost(ctx context.Context, veinGet VeinG
 
 	var ret VeinGetResponse
 	ret.ReturnInformation = make(map[string]interface{})
-	ret.ReturnInformation["ReceivedEntityID"] = veinGet.EntityID
-	ret.ReturnInformation["ReceivedComponentName"] = veinGet.ComponentName
-	ret.ReturnInformation["ReceivedMiscInfo"] = veinGet.MiscFieldForInfo
+	ret.ReturnInformation["ReturnInformation"] = "Requested component: " + veinGet.ComponentName
 
 	//TODO: Uncomment the next line to return response Response(200, VeinGetResponse{}) or use other options such as http.Ok ...
 	return Response(200, ret), nil
