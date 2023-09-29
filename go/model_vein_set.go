@@ -9,9 +9,6 @@
 
 package openapi
 
-
-
-
 type VeinSet struct {
 
 	// The component ID of the desired information
@@ -29,7 +26,14 @@ func AssertVeinSetRequired(obj VeinSet) error {
 	return nil
 }
 
-// AssertVeinSetConstraints checks if the values respects the defined constraints
-func AssertVeinSetConstraints(obj VeinSet) error {
-	return nil
+// AssertRecurseVeinSetRequired recursively checks if required fields are not zero-ed in a nested slice.
+// Accepts only nested slice of VeinSet (e.g. [][]VeinSet), otherwise ErrTypeAssertionError is thrown.
+func AssertRecurseVeinSetRequired(objSlice interface{}) error {
+	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
+		aVeinSet, ok := obj.(VeinSet)
+		if !ok {
+			return ErrTypeAssertionError
+		}
+		return AssertVeinSetRequired(aVeinSet)
+	})
 }

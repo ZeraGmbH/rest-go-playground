@@ -19,10 +19,10 @@ import (
 func main() {
 	log.Printf("Server started")
 
-	VeinAPIService := openapi.NewVeinAPIService()
-	VeinAPIController := openapi.NewVeinAPIController(VeinAPIService)
+	VeinApiService := openapi.NewVeinApiService()
+	VeinApiController := openapi.NewVeinApiController(VeinApiService)
 
-	router := openapi.NewRouter(VeinAPIController)
+	router := openapi.NewRouter(VeinApiController)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

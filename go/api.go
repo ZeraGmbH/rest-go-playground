@@ -16,20 +16,20 @@ import (
 
 
 
-// VeinAPIRouter defines the required methods for binding the api requests to a responses for the VeinAPI
-// The VeinAPIRouter implementation should parse necessary information from the http request,
-// pass the data to a VeinAPIServicer to perform the required actions, then write the service results to the http response.
-type VeinAPIRouter interface { 
+// VeinApiRouter defines the required methods for binding the api requests to a responses for the VeinApi
+// The VeinApiRouter implementation should parse necessary information from the http request,
+// pass the data to a VeinApiServicer to perform the required actions, then write the service results to the http response.
+type VeinApiRouter interface { 
 	ApiV1VeinGetInfoPost(http.ResponseWriter, *http.Request)
 	ApiV1VeinSetInfoPost(http.ResponseWriter, *http.Request)
 }
 
 
-// VeinAPIServicer defines the api actions for the VeinAPI service
+// VeinApiServicer defines the api actions for the VeinApi service
 // This interface intended to stay up to date with the openapi yaml used to generate it,
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
-type VeinAPIServicer interface { 
+type VeinApiServicer interface { 
 	ApiV1VeinGetInfoPost(context.Context, VeinGet) (ImplResponse, error)
 	ApiV1VeinSetInfoPost(context.Context, VeinSet) (ImplResponse, error)
 }

@@ -13,7 +13,7 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: v1
-- Build date: 2023-09-29T12:14:31.792296240+02:00[Europe/Berlin]
+- Build date: 2023-09-29T13:35:07.886136270+02:00[Europe/Berlin]
 For more information, please visit [https://www.zera.de/en/contact/](https://www.zera.de/en/contact/)
 
 
